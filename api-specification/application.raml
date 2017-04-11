@@ -1,0 +1,119 @@
+#%RAML 1.0
+---
+
+title: Tic Toc Toe Game API
+version: 1.0
+protocols: [ HTTP ]
+baseUri: http://tic.tac.toe/
+mediaType: application/json
+
+/game:
+  post:
+    displayName: Start a Game
+    description: Start a new Game with an empty 3x3 board
+    responses:
+      201:
+        headers:
+          Location:
+            example: /game/{gameId}
+            description: Resource path to the new Game
+  /{gameId}:
+    uriParameters:
+      gameId:
+        displayName: Game ID
+        description: An identifier which uniquely identifies a Game
+        type: string
+    get:
+      displayName: Get the Game
+      description: Get the state of the Game identified by the gameId
+      responses:
+        200:
+          body:
+            application/json:
+              type: !include schemas/game.json
+              example: !include examples/game.json
+        404:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/404_GAME_NOT_FOUND.json
+
+  /{gameId}/player:
+    uriParameters:
+      gameId:
+        displayName: Game ID
+        description: An identifier which uniquely identifies a Game
+        type: string
+    post:
+      displayName: Add a Player
+      description: Add a new Player to the Game identified by the 'gameId'
+      body:
+        application/json:
+          type: !include schemas/player.json
+          example: !include examples/player.json
+      responses:
+        201:
+          headers:
+            Location:
+              example: /game/{gameId}/player/x
+              description: Resource path to the new Player
+        403:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/403_TOO_MANY_PLAYERS.json
+        404:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/404_GAME_NOT_FOUND.json
+        409:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/409_DUPLICATE_PLAYER.json
+
+  /{gameId}/player/{playerId}/symbol:
+    uriParameters:
+      gameId:
+        displayName: Game ID
+        description: An identifier which uniquely identifies a Game
+        type: string
+      playerId:
+        displayName: Player ID
+        description: An identifier which uniquely identifies a Player within a Game
+        enum: ["x", "o"]
+    put:
+      displayName: Player's move
+      description: Put a 'x' or 'o' at the given location on the Game board
+      body:
+        application/json:
+          type: !include schemas/player_move.json
+          example: !include examples/player_move.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: !include schemas/result.json
+              example: !include examples/result.json
+        204:
+        400:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/400_INVALID_LOCATION.json
+        403:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/403_GAME_OVER.json
+        404:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/404_GAME_NOT_FOUND.json
+        409:
+          body:
+            application/json:
+              schema: !include schemas/error.json
+              example: !include examples/errors/409_OCCUPIED_LOCATION.json

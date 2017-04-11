@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Result",
+  "type": "object",
+  "definitions": {
+    "boardrow": {
+      "title": "Row of the Game board",
+      "description": "This is the row of the Game board",
+      "type": "array",
+      "items": {
+         "type": "string"        
+      }
+    }
+  },
+  "properties": {
+    "board": {
+      "title": "Outcome of the Game",
+      "description": "Provides the outcome of the Game",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/boardrow"
+      }
+    },
+    "outcome": {
+      "title": "Outcome of the Game",
+      "description": "Provides the outcome of the Game",
+      "enum": ["DRAWN", "X_WON", "O_WON", "IN_PROGRESS"]
+    }
+  },
+  "required": [
+    "outcome"
+  ],
+  "additionalProperties": false
+}

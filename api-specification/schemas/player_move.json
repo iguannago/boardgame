@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Player Move",
+  "type": "object",
+  "properties": {
+    "location": {
+      "title": "Location",
+      "description": "Game board Location",
+      "type": "object",
+      "properties": {
+        "row": {
+          "title": "Row",
+          "description": "Row of the Game board",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "column": {
+          "title": "Column",
+          "description": "Column of the Game board",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        }
+      },
+      "required": [
+        "row", "column"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

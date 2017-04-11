@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "code": "TOO_MANY_PLAYERS",
+      "message": "the game already has 2 players"
+    }
+  ]
+}

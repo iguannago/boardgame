@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "code": "GAME_NOT_FOUND",
+      "message": "Game not found"
+    }
+  ]
+}

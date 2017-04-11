@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "code": "OCCUPIED_LOCATION",
+      "message": "Location is already occupied by another player"
+    }
+  ]
+}
