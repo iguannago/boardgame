@@ -29,7 +29,7 @@ public class GameFunctionalSpec extends BaseFunctionalSpec {
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("api-specification/schemas/game.json"))
-                .body("outcome", equalTo("IN_PROGRESS"));
+                .body("position", equalTo("IN_PROGRESS"));
     }
 
     @Test

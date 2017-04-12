@@ -7,10 +7,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class GameResult {
 
     @JsonProperty
-    private Outcome outcome;
+    private GamePosition position;
 
-    public GameResult(Outcome outcome) {
-        this.outcome = outcome;
+    public GameResult(GamePosition position) {
+        this.position = position;
     }
 
     @Override
@@ -22,19 +22,19 @@ public class GameResult {
         GameResult that = (GameResult) o;
 
         return new EqualsBuilder()
-                .append(outcome, that.outcome)
+                .append(position, that.position)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(outcome)
+                .append(position)
                 .toHashCode();
     }
 
     @Override
     public String toString() {
-        return outcome == null ? "" : outcome.name();
+        return position == null ? "" : position.name();
     }
 }

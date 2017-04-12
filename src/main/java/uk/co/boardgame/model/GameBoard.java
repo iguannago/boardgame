@@ -9,8 +9,8 @@ class GameBoard {
 
     GameBoard() {
         this(new String[][]{{"", "", ""},
-                {"", "", ""},
-                {"", "", ""}});
+                            {"", "", ""},
+                            {"", "", ""}});
     }
 
     /**
@@ -24,22 +24,22 @@ class GameBoard {
         return board;
     }
 
-    void set(Player player, GameBoardLocation location) {
-        board[location.zeroBasedRow()][location.zeroBasedColumn()] = player.name();
+    void set(Symbol symbol, GameBoardLocation location) {
+        board[location.zeroBasedRow()][location.zeroBasedColumn()] = symbol.name();
     }
 
     boolean isAvailable(GameBoardLocation location) {
         return board[location.zeroBasedRow()][location.zeroBasedColumn()].isEmpty();
     }
 
-    Outcome position() {
-        if (occupiesARowOrCol(Player.X) || aDiagonalIsOccupiedBy(Player.X)) return Outcome.X_WON;
+    GamePosition position() {
+        if (occupiesARowOrCol(Symbol.X) || aDiagonalIsOccupiedBy(Symbol.X)) return GamePosition.X_WON;
 
-        if (occupiesARowOrCol(Player.O) || aDiagonalIsOccupiedBy(Player.O)) return Outcome.O_WON;
+        if (occupiesARowOrCol(Symbol.O) || aDiagonalIsOccupiedBy(Symbol.O)) return GamePosition.O_WON;
 
-        if (isFull()) return Outcome.DRAWN;
+        if (isFull()) return GamePosition.DRAWN;
 
-        return Outcome.IN_PROGRESS;
+        return GamePosition.IN_PROGRESS;
     }
 
     private boolean isFull() {
@@ -47,13 +47,13 @@ class GameBoard {
         return collect.toCharArray().length == 9;
     }
 
-    private boolean aDiagonalIsOccupiedBy(Player player) {
-        return (player.name().equals(board[0][0]) && player.name().equals(board[1][1]) && player.name().equals(board[2][2]))
-                || (player.name().equals(board[0][2]) && player.name().equals(board[1][1]) && player.name().equals(board[2][0]));
+    private boolean aDiagonalIsOccupiedBy(Symbol symbol) {
+        return (symbol.name().equals(board[0][0]) && symbol.name().equals(board[1][1]) && symbol.name().equals(board[2][2]))
+                || (symbol.name().equals(board[0][2]) && symbol.name().equals(board[1][1]) && symbol.name().equals(board[2][0]));
     }
 
-    private boolean occupiesARowOrCol(Player player) {
-        String combinedRowOrCol = player.name() + player.name() + player.name();
+    private boolean occupiesARowOrCol(Symbol symbol) {
+        String combinedRowOrCol = symbol.name() + symbol.name() + symbol.name();
         return combinedRowOrCol.equals(row(0)) || combinedRowOrCol.equals(row(1)) || combinedRowOrCol.equals(row(2))
                 || combinedRowOrCol.equals(col(0)) || combinedRowOrCol.equals(col(1)) || combinedRowOrCol.equals(col(2));
     }

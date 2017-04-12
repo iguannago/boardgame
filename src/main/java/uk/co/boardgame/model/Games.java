@@ -18,8 +18,4 @@ public class Games extends HashMap<String, Game>{
         return gameId;
     }
 
-    public String addPlayerToGame(String gameId) {
-        return get(gameId).addPlayer().name().toLowerCase();
-    }
-
 }

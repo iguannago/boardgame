@@ -22,23 +22,14 @@ public class GameResource {
                 .body(games.get(gameId));
     }
 
-    @PostMapping("/game/{gameId}/player")
-    public ResponseEntity addAPlayerToGame(@PathVariable("gameId") String gameId) {
-        return ResponseEntity
-                .status(201)
-                .header("Location", String.format("/game/%s/player/%s", gameId, games.addPlayerToGame(gameId))).build();
-    }
-
-    @PutMapping("/game/{gameId}/player/{playerId}")
-    public ResponseEntity addAPlayerToGame(@PathVariable("gameId") String gameId, @PathVariable("playerId") String playerId,
-                                           @RequestBody GameBoardLocation location) {
+    @PutMapping("/game/{gameId}/board/{symbol}")
+    public ResponseEntity putTheSymbolOnBoard(@PathVariable("gameId") String gameId, @PathVariable("symbol") String symbol,
+                                              @RequestBody GameBoardLocation location) {
         location.validate();
-        Game game = games.get(gameId);
-        game.set(Player.valueOf(playerId.toUpperCase()), location);
-        return ResponseEntity
-                .status(200)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new GameResult(game.state()));
+
+        games.get(gameId).mark(Symbol.from(symbol), location);
+
+        return ResponseEntity.status(204).build();
     }
 
 }

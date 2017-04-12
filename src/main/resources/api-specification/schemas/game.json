@@ -3,7 +3,7 @@
   "title": "Result",
   "type": "object",
   "definitions": {
-    "boardrow": {
+    "board-row": {
       "title": "Row of the Game board",
       "description": "This is the row of the Game board",
       "type": "array",
@@ -18,17 +18,17 @@
       "description": "Provides the outcome of the Game",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/boardrow"
+        "$ref": "#/definitions/board-row"
       }
     },
-    "outcome": {
-      "title": "Outcome of the Game",
-      "description": "Provides the outcome of the Game",
+    "position": {
+      "title": "Current Position of the Game",
+      "description": "Provides the current Position of the Game",
       "enum": ["DRAWN", "X_WON", "O_WON", "IN_PROGRESS"]
     }
   },
   "required": [
-    "outcome"
+    "position"
   ],
   "additionalProperties": false
 }

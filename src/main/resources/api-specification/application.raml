@@ -38,55 +38,22 @@ mediaType: application/json
               schema: !include schemas/error.json
               example: !include examples/errors/404_GAME_NOT_FOUND.json
 
-  /{gameId}/player:
+  /{gameId}/board/{symbol}:
     uriParameters:
       gameId:
         displayName: Game ID
         description: An identifier which uniquely identifies a Game
         type: string
-    post:
-      displayName: Add a Player
-      description: Add a new Player to the Game identified by the 'gameId'
-      responses:
-        201:
-          headers:
-            Location:
-              example: /game/{gameId}/player/x
-              description: Resource path to the new Player
-        403:
-          body:
-            application/json:
-              schema: !include schemas/error.json
-              example: !include examples/errors/403_TOO_MANY_PLAYERS.json
-        404:
-          body:
-            application/json:
-              schema: !include schemas/error.json
-              example: !include examples/errors/404_GAME_NOT_FOUND.json
-
-  /{gameId}/player/{playerId}/symbol:
-    uriParameters:
-      gameId:
-        displayName: Game ID
-        description: An identifier which uniquely identifies a Game
-        type: string
-      playerId:
-        displayName: Player ID
-        description: An identifier which uniquely identifies a Player within a Game
+      symbol:
+        displayName: Symbol
+        description: Symbol
         enum: ["x", "o"]
     put:
-      displayName: Player's move
-      description: Put a 'x' or 'o' at the given location on the Game board
       body:
         application/json:
           type: !include schemas/player_move.json
           example: !include examples/player_move.json
       responses:
-        200:
-          body:
-            application/json:
-              type: !include schemas/result.json
-              example: !include examples/result.json
         204:
         400:
           body:

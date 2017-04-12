@@ -10,82 +10,82 @@ public class GameBoardSpec {
     public void xWinsIfXOccupiesAllColsInARow() {
         assertThat(new GameBoard(new String[][]{{"X", "X", "X"},
                                             {"O", "O", ""},
-                                            {"", "", ""}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"", "", ""}}).position()).isEqualTo(GamePosition.X_WON);
 
         assertThat(new GameBoard(new String[][]{{"O", "O", ""},
                                             {"X", "X", "X"},
-                                            {"", "", ""}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"", "", ""}}).position()).isEqualTo(GamePosition.X_WON);
 
         assertThat(new GameBoard(new String[][]{{"O", "O", ""},
                                             {"", "", ""},
-                                            {"X", "X", "X"}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"X", "X", "X"}}).position()).isEqualTo(GamePosition.X_WON);
     }
 
     @Test
     public void xWinsIfXOccupiesAllRowsInACol() {
         assertThat(new GameBoard(new String[][]{{"X", "O", ""},
                                             {"X", "O", ""},
-                                            {"X", "", ""}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"X", "", ""}}).position()).isEqualTo(GamePosition.X_WON);
 
         assertThat(new GameBoard(new String[][]{{"O", "X", ""},
                                             {"O", "X", ""},
-                                            {"", "X", ""}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"", "X", ""}}).position()).isEqualTo(GamePosition.X_WON);
 
         assertThat(new GameBoard(new String[][]{{"", "O", "X"},
                                             {"", "", "X"},
-                                            {"", "O", "X"}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"", "O", "X"}}).position()).isEqualTo(GamePosition.X_WON);
     }
 
     @Test
     public void xWinsIfXOccupiesDiagonal() {
         assertThat(new GameBoard(new String[][]{{"X", "", ""},
                                             {"O", "X", ""},
-                                            {"O", "", "X"}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"O", "", "X"}}).position()).isEqualTo(GamePosition.X_WON);
 
         assertThat(new GameBoard(new String[][]{{"", "O", "X"},
                                             {"O", "X", ""},
-                                            {"X", "", ""}}).position()).isEqualTo(Outcome.X_WON);
+                                            {"X", "", ""}}).position()).isEqualTo(GamePosition.X_WON);
     }
 
     @Test
     public void oWinsIfOOccupiesAllColsInARow() {
         assertThat(new GameBoard(new String[][]{{"O", "O", "O"},
                                             {"X", "X", ""},
-                                            {"", "", ""}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"", "", ""}}).position()).isEqualTo(GamePosition.O_WON);
 
         assertThat(new GameBoard(new String[][]{{"X", "X", ""},
                                             {"O", "O", "O"},
-                                            {"", "", ""}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"", "", ""}}).position()).isEqualTo(GamePosition.O_WON);
 
         assertThat(new GameBoard(new String[][]{{"X", "X", ""},
                                             {"", "", ""},
-                                            {"O", "O", "O"}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"O", "O", "O"}}).position()).isEqualTo(GamePosition.O_WON);
     }
 
     @Test
     public void oWinsIfOOccupiesAllRowsInACol() {
         assertThat(new GameBoard(new String[][]{{"O", "X", ""},
                                             {"O", "X", ""},
-                                            {"O", "", ""}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"O", "", ""}}).position()).isEqualTo(GamePosition.O_WON);
 
         assertThat(new GameBoard(new String[][]{{"X", "O", ""},
                                             {"X", "O", ""},
-                                            {"", "O", ""}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"", "O", ""}}).position()).isEqualTo(GamePosition.O_WON);
 
         assertThat(new GameBoard(new String[][]{{"", "X", "O"},
                                             {"", "", "O"},
-                                            {"", "X", "O"}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"", "X", "O"}}).position()).isEqualTo(GamePosition.O_WON);
     }
 
     @Test
     public void oWinsIfOOccupiesDiagonal() {
         assertThat(new GameBoard(new String[][]{{"O", "", ""},
                                             {"X", "O", ""},
-                                            {"X", "", "O"}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"X", "", "O"}}).position()).isEqualTo(GamePosition.O_WON);
 
         assertThat(new GameBoard(new String[][]{{"", "X", "O"},
                                             {"X", "O", ""},
-                                            {"O", "", ""}}).position()).isEqualTo(Outcome.O_WON);
+                                            {"O", "", ""}}).position()).isEqualTo(GamePosition.O_WON);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class GameBoardSpec {
                             {"O", "X", "O"},
                             {"X", "O", "X"}};
 
-        assertThat(new GameBoard(board).position()).isEqualTo(Outcome.DRAWN);
+        assertThat(new GameBoard(board).position()).isEqualTo(GamePosition.DRAWN);
     }
 
     @Test
@@ -103,7 +103,7 @@ public class GameBoardSpec {
                             {"O", "X", "O"},
                             {"X", "O", ""}};
 
-        assertThat(new GameBoard(board).position()).isEqualTo(Outcome.IN_PROGRESS);
+        assertThat(new GameBoard(board).position()).isEqualTo(GamePosition.IN_PROGRESS);
     }
 
 }
