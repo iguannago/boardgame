@@ -47,10 +47,6 @@ mediaType: application/json
     post:
       displayName: Add a Player
       description: Add a new Player to the Game identified by the 'gameId'
-      body:
-        application/json:
-          type: !include schemas/player.json
-          example: !include examples/player.json
       responses:
         201:
           headers:
@@ -67,11 +63,6 @@ mediaType: application/json
             application/json:
               schema: !include schemas/error.json
               example: !include examples/errors/404_GAME_NOT_FOUND.json
-        409:
-          body:
-            application/json:
-              schema: !include schemas/error.json
-              example: !include examples/errors/409_DUPLICATE_PLAYER.json
 
   /{gameId}/player/{playerId}/symbol:
     uriParameters:
