@@ -17,11 +17,6 @@ public abstract class BaseFunctionalSpec {
     @LocalServerPort
     private int port;
 
-    @BeforeClass
-    public static void init() {
-        RestAssured.proxy("localhost", 8888);
-    }
-
     protected String url(String path) {
         return String.format("http://localhost:%s%s", this.port, path);
     }
