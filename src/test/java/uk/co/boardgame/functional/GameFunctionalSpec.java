@@ -28,7 +28,7 @@ public class GameFunctionalSpec extends BaseFunctionalSpec {
         get(url(newGameResource + "/state"))
                 .then()
                 .statusCode(200)
-                .body(matchesJsonSchemaInClasspath("api-specification/schemas/game.json"))
+                .body(matchesJsonSchemaInClasspath("api-specification/schemas/game_state.json"))
                 .body("state", equalTo("IN_PROGRESS"));
     }
 
