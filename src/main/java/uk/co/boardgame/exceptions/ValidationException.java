@@ -1,6 +1,6 @@
-package uk.co.boardgame;
+package uk.co.boardgame.exceptions;
 
-import uk.co.boardgame.model.Error;
+import uk.co.boardgame.models.Error;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package uk.co.boardgame;
+package uk.co.boardgame.exceptions;
 
 public abstract class ApplicationException extends RuntimeException {
     private final String code;

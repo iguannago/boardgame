@@ -1,4 +1,4 @@
-package uk.co.boardgame;
+package uk.co.boardgame.exceptions;
 
 public class BusinessException extends ApplicationException {
     public BusinessException(String code, String message) {

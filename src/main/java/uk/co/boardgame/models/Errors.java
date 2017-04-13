@@ -1,4 +1,4 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models;
 
 import java.util.ArrayList;
 import java.util.List;

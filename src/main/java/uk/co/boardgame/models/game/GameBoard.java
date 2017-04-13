@@ -1,4 +1,4 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models.game;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -20,11 +20,7 @@ class GameBoard {
         this.board = board;
     }
 
-    String[][] board() {
-        return board;
-    }
-
-    void set(Symbol symbol, GameBoardLocation location) {
+    void placeSymbolAt(Symbol symbol, GameBoardLocation location) {
         board[location.zeroBasedRow()][location.zeroBasedColumn()] = symbol.name();
     }
 
@@ -32,14 +28,14 @@ class GameBoard {
         return board[location.zeroBasedRow()][location.zeroBasedColumn()].isEmpty();
     }
 
-    GamePosition position() {
-        if (occupiesARowOrCol(Symbol.X) || aDiagonalIsOccupiedBy(Symbol.X)) return GamePosition.X_WON;
+    GameState currentState() {
+        if (occupiesARowOrCol(Symbol.X) || aDiagonalIsOccupiedBy(Symbol.X)) return GameState.X_WON;
 
-        if (occupiesARowOrCol(Symbol.O) || aDiagonalIsOccupiedBy(Symbol.O)) return GamePosition.O_WON;
+        if (occupiesARowOrCol(Symbol.O) || aDiagonalIsOccupiedBy(Symbol.O)) return GameState.O_WON;
 
-        if (isFull()) return GamePosition.DRAWN;
+        if (isFull()) return GameState.DRAWN;
 
-        return GamePosition.IN_PROGRESS;
+        return GameState.IN_PROGRESS;
     }
 
     private boolean isFull() {

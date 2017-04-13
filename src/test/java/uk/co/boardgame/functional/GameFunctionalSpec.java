@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 public class GameFunctionalSpec extends BaseFunctionalSpec {
 
     @Test
-    public void createANewGame() throws Exception {
+    public void createANewGameShouldReturnTheLocationOfTheNewGame() throws Exception {
                 post(url("/game"))
                 .then()
                 .statusCode(201)
@@ -20,27 +20,26 @@ public class GameFunctionalSpec extends BaseFunctionalSpec {
     }
 
     @Test
-    public void getAnExistingGame() throws Exception {
+    public void stateOfTheNewGameShouldBeInProgress() throws Exception {
         String newGameResource = post(url("/game"))
                                     .then()
                                     .statusCode(201).extract().header("Location");
 
-        get(url(newGameResource))
+        get(url(newGameResource + "/state"))
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("api-specification/schemas/game.json"))
-                .body("position", equalTo("IN_PROGRESS"));
+                .body("state", equalTo("IN_PROGRESS"));
     }
 
     @Test
-    public void getANonExistentGame() throws Exception {
-        get(url("/game/unknowngame"))
+    public void gettingStateOfANonExistentGameShouldResultInFailure() throws Exception {
+        get(url("/game/unknowngame/state"))
                 .then()
                 .statusCode(404)
                 .body(matchesJsonSchemaInClasspath("api-specification/schemas/error.json"))
                 .body("errors.code", hasItem("GAME_NOT_FOUND"));
     }
-
 
 
 }

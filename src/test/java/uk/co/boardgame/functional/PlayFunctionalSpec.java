@@ -176,10 +176,10 @@ public class PlayFunctionalSpec extends BaseFunctionalSpec {
             .then()
             .statusCode(204);
 
-        get(url(newGame))
+        get(url(newGame + "/state"))
             .then()
             .statusCode(200)
-            .body("position", equalTo("X_WON"));
+            .body("state", equalTo("X_WON"));
 
         given()
             .contentType(ContentType.JSON)

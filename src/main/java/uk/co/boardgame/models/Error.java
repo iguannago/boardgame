@@ -1,4 +1,4 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,6 +1,6 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models.game;
 
-import uk.co.boardgame.ResourceNotFoundException;
+import uk.co.boardgame.exceptions.ResourceNotFoundException;
 
 import java.util.HashMap;
 import java.util.UUID;

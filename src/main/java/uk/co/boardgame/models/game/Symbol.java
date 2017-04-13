@@ -1,6 +1,6 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models.game;
 
-import uk.co.boardgame.BusinessException;
+import uk.co.boardgame.exceptions.BusinessException;
 
 public enum Symbol {
     X, O;

@@ -1,12 +1,11 @@
-package uk.co.boardgame;
+package uk.co.boardgame.exceptions;
 
-import javaslang.Tuple;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import uk.co.boardgame.model.Errors;
+import uk.co.boardgame.models.Errors;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,6 +1,6 @@
-package uk.co.boardgame;
+package uk.co.boardgame.exceptions;
 
-import uk.co.boardgame.model.GameBoardLocation;
+import uk.co.boardgame.models.game.GameBoardLocation;
 
 public class LocationUnavailableException extends ApplicationException {
     public LocationUnavailableException(GameBoardLocation location) {

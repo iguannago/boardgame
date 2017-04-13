@@ -1,8 +1,9 @@
-package uk.co.boardgame.model;
+package uk.co.boardgame.models.game;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import uk.co.boardgame.ValidationException;
+import uk.co.boardgame.exceptions.ValidationException;
+import uk.co.boardgame.models.Error;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class GameBoardLocation {
     private final Integer column;
 
     @JsonCreator
-    public GameBoardLocation(@JsonProperty("row") Integer row, @JsonProperty("column") Integer column) {
+    GameBoardLocation(@JsonProperty("row") Integer row, @JsonProperty("column") Integer column) {
         this.row = row;
         this.column = column;
     }
