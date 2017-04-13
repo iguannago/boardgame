@@ -8,10 +8,7 @@ baseUri: http://tic.tac.toe/
 mediaType: application/json
 
 /game:
-  displayName: Game Resource
-  description: Use this resource to start a new Game with empty 3x3 board
   post:
-    displayName: Start a Game
     description: Start a new Game with an empty 3x3 board
     responses:
       201:
@@ -20,22 +17,19 @@ mediaType: application/json
             example: /game/{gameId}
             description: Resource path to the new Game
   /{gameId}/state:
-    displayName: Game State Resource
-    description: Resource which provides the current state of the Game
     uriParameters:
       gameId:
         displayName: Game ID
         description: An identifier which uniquely identifies a Game
         type: string
     get:
-      displayName: Get the Game
-      description: Get this resource if you want to know the current state of the Game
+      description: Use this resource if you want to know the current state of the Game
       responses:
         200:
           body:
             application/json:
-              type: !include schemas/game.json
-              example: !include examples/game.json
+              type: !include schemas/game_state.json
+              example: !include examples/game_state.json
         404:
           body:
             application/json:
@@ -43,18 +37,15 @@ mediaType: application/json
               example: !include examples/errors/404_GAME_NOT_FOUND.json
 
   /{gameId}/board/{symbol}:
-    displayName: Board Symbol Resource
-    description: Use this resource to place the given symbol on the Game board
     uriParameters:
       gameId:
         displayName: Game ID
         description: An identifier which uniquely identifies a Game
         type: string
       symbol:
-        displayName: Symbol
-        description: Symbol
         enum: ["x", "o"]
     put:
+      description: Use this resource to place the given symbol on the Game board
       body:
         application/json:
           type: !include schemas/player_move.json

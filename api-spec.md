@@ -2,8 +2,7 @@
 
 ---
 
-## Game Resource
-Use this resource to start a new Game with empty 3x3 board
+## /game
 
 ### /game
 
@@ -21,7 +20,6 @@ Start a new Game with an empty 3x3 board
 ---
 
 ### /game/{gameId}/state
-Resource which provides the current state of the Game
 
 * **Game ID**: An identifier which uniquely identifies a Game
     * Type: string
@@ -29,7 +27,7 @@ Resource which provides the current state of the Game
     * Required: true
 
 #### **GET**:
-Get this resource if you want to know the current state of the Game
+Use this resource if you want to know the current state of the Game
 
 ### Response code: 200
 
@@ -67,19 +65,19 @@ Get this resource if you want to know the current state of the Game
 ---
 
 ### /game/{gameId}/board/{symbol}
-Use this resource to place the given symbol on the Game board
 
 * **Game ID**: An identifier which uniquely identifies a Game
     * Type: string
     
     * Required: true
 
-* **Symbol**: Symbol
+* **symbol**: 
     * Type: string
     
     * Required: true
 
 #### **PUT**:
+Use this resource to place the given symbol on the Game board
 
 #### application/json (application/json) 
 
